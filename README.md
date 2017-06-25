@@ -12,9 +12,6 @@ And hit:
 
 # JSF quick tour
 
-In JSF, `managed bean` means a Java class that can be accessed from a JSF page and
-the same is denoted by the annotation `javax.faces.bean.ManagedBean`
-
 To use the JSF 2.0 components, they need to be declared in the JSF namespace at the
 top of the page. Example:
 ```xml
@@ -32,10 +29,10 @@ And we use `h` in the hello.xhtml as:
 ```
 `inputText` and `commandButton` are straightforward widgets from JSF.  
 
-Note the use of `helloBean.name`. The helloBean was created because of the annotation
+Note the use of `helloBean.name`. The object `helloBean` was created because of the annotation
 [@ManagedBean](http://docs.oracle.com/javaee/6/api/javax/faces/bean/ManagedBean.html)
-on the class HelloBean.java. This annotation is responsible for creating an object of the class
-and making it accessible as `helloBean` in the xhtml pages.
+on the class [HelloBean.java](src/main/java/com/example/common/HelloBean.java). This annotation
+is responsible for creating an object of the class and making it accessible as `helloBean` in the xhtml pages.
 
 Another thing to note is the `action="welcome"` attribute. This attribute is responsible for
-linking the two xhtml pages.
+linking [welcome.xhtml](src/main/webapp/welcome.xhtml) as a target of the form's action.
