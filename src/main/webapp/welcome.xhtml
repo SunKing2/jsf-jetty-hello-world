@@ -3,6 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
@@ -10,6 +11,22 @@
 </h:head>
 <h:body bgcolor="white">
 	<h3>JSF 2.0 Hello World Example - welcome.xhtml</h3>
-	<h4>Welcome #{helloBean.name}</h4>
+
+	<!-- JSTL allows inserting if conditions -->
+	<c:if test="${sessionScope.helloBean.name.length() > 1}">
+	  <h4>Welcome #{helloBean.name}</h4>
+	  Name length: #{helloBean.name.length()} <BR/>
+    </c:if>
+
+    <!-- Unfortunately there is no if-else condition -->
+    <!-- The equivalent of if-else is choose-when as shown below -->
+    <c:choose>
+      <c:when test="${helloBean.name.length() > 2}">
+        Name-length &gt; 2
+      </c:when>
+      <c:otherwise>
+        No welcome if name-length &lt;= 2
+      </c:otherwise>
+    </c:choose>
 </h:body>
 </html>
