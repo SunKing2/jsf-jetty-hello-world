@@ -1,4 +1,7 @@
-# Hello world program for JSF with Jetty
+# JSF Tomcat example sample, works with Jetty too.
+
+Not my original code, I forked this from
+[https://github.com/sachingsachin/jsf-jetty-hello-world]
 
 Run as:
 
@@ -10,29 +13,32 @@ And hit:
 [http://localhost:8080/hello.xhtml](http://localhost:8080/hello.xhtml)
 
 
-# JSF quick tour
+# Code highlights
 
-To use the JSF 2.0 components, they need to be declared in the JSF namespace at the
-top of the page. Example:
-```xml
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
-```
-With the above declaration, we now have two namespaces: `f` and `h`.  
-And we use `h` in the hello.xhtml as:
+hello.xhtml:
 ```xml
 	<h:form>
 		<h:inputText value="#{helloBean.name}"></h:inputText>
 		<h:commandButton value="Welcome Me" action="welcome"></h:commandButton>
 	</h:form>
 ```
-`inputText` and `commandButton` are straightforward widgets from JSF.  
 
-Note the use of `helloBean.name`. The object `helloBean` was created because of the annotation
-[@ManagedBean](http://docs.oracle.com/javaee/6/api/javax/faces/bean/ManagedBean.html)
-on the class [HelloBean.java](src/main/java/com/example/common/HelloBean.java). This annotation
-is responsible for creating an object of the class and making it accessible as `helloBean` in the xhtml pages.
+#HelloBean.java
+```
+// package, imports not shown
+@ManagedBean
+@SessionScoped
+public class HelloBean implements Serializable {
 
-Another thing to note is the `action="welcome"` attribute. This attribute is responsible for
-linking [welcome.xhtml](src/main/webapp/welcome.xhtml) as a target of the form's action.
+    private static final long serialVersionUID = 1L;
+
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+```
