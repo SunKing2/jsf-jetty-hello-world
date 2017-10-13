@@ -2,9 +2,9 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.example</groupId>
-  <artifactId>JavaServerFaces</artifactId>
+  <artifactId>jsf</artifactId>
   <packaging>war</packaging>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1</version>
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -53,31 +53,6 @@
         <version>${jettyVersion}</version>
       </plugin>
 
-      <plugin>
-        <!-- This plugin copies the jetty-runner plugin which enables
-             running the war file as:
-                 java -jar target/dependency/jetty-runner.jar target/*.war
-         -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.0.2</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals><goal>copy</goal></goals>
-            <configuration>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>org.eclipse.jetty</groupId>
-                  <artifactId>jetty-runner</artifactId>
-                  <version>${jettyVersion}</version>
-                  <destFileName>jetty-runner.jar</destFileName>
-                </artifactItem>
-              </artifactItems>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
 
     </plugins>
   </build>

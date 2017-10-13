@@ -42,3 +42,36 @@ public class HelloBean implements Serializable {
     }
 }
 ```
+
+
+# (Optional!!!!) Running final build with $java command
+
+Add this to the pom.xml file:
+
+```xml
+<plugin>
+  <!-- This plugin copies the jetty-runner plugin which enables
+       running the war file as:
+           java -jar target/dependency/jetty-runner.jar target/*.war
+   -->
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-dependency-plugin</artifactId>
+  <version>3.0.2</version>
+  <executions>
+    <execution>
+      <phase>package</phase>
+      <goals><goal>copy</goal></goals>
+      <configuration>
+        <artifactItems>
+          <artifactItem>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-runner</artifactId>
+            <version>${jettyVersion}</version>
+            <destFileName>jetty-runner.jar</destFileName>
+          </artifactItem>
+        </artifactItems>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
+```
