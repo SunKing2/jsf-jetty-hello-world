@@ -1,6 +1,6 @@
 # JSF Tomcat example sample, works with Jetty too.
 
-Not my original code, I forked this from
+Not my original code, I forked this from user sachingsachin from
 [https://github.com/sachingsachin/jsf-jetty-hello-world]
 
 Run as:
@@ -46,7 +46,7 @@ public class HelloBean implements Serializable {
 
 # (Optional!!!!) Running final build with $java command
 
-Add this to the pom.xml file:
+Add this to the pom.xml file (this was tested with the following version of Jetty only: 9.3.21.v20170918):
 
 ```xml
 <plugin>
@@ -75,3 +75,19 @@ Add this to the pom.xml file:
   </executions>
 </plugin>
 ```
+
+Then add this as a dependency
+```xml
+
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-server</artifactId>
+      <version>${jettyVersion}</version>
+    </dependency>
+```
+
+# My goal for changes on this project (if possible):
+- update dependencies to use most modern jars available
+- use JavaServer Faces API 2.3 (compatible with Java EE 8).
+- reduce lines of code in Java, XHTML, and pom.xml to bare minimum to allow for a JSF demo.
+- Use Java 9. (there are early problems with Mojarra implementations under Java 9)
